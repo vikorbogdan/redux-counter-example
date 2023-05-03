@@ -4,11 +4,11 @@ import App from "./App.jsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./reducers/counter";
-import isLoggedReducer from "./reducers/isLogged.js";
+import counterSlice from "./features/counter/counterSlice.js";
+import isLoggedSlice from "./features/counter/isLoggedSlice.js";
 
 const store = configureStore({
-  reducer: { counter: counterReducer, isLogged: isLoggedReducer },
+  reducer: { counter: counterSlice.reducer, isLogged: isLoggedSlice.reducer },
 });
 store.subscribe(() => console.log(store.getState()));
 // store.dispatch({ type: "INCREMENT" });
