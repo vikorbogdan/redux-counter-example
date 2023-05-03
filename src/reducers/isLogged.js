@@ -1,9 +1,12 @@
-const loggedReducer = (state = false, action) => {
-  switch (action.type) {
-    case "SIGN_IN":
-      return !state;
-    default:
-      return state; // return the state unchanged
-  }
-};
-export default loggedReducer;
+import { createAction, createReducer } from "@reduxjs/toolkit";
+
+const signIn = createAction("isLogged/signIn");
+
+const initialState = { value: false };
+const isLoggedReducer = createReducer(initialState, (builder) => {
+  builder.addCase(signIn, (state, action) => {
+    state.value = !state.value;
+  });
+});
+export { signIn };
+export default isLoggedReducer;
